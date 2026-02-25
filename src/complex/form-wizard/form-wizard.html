@@ -1,0 +1,85 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">formWizard()</span>
+        <span class="module__number">No. XII</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Journey</h3>
+        <p class="module__description">
+            A form in acts—each step a scene in your submission.
+        </p>
+        <div class="demo-area" data-wp-interactive="formWizard"
+            data-wp-context='{ "currentStep": 1, "totalSteps": 3, "isSubmitting": false, "isComplete": false, "name": "", "email": "", "phone": "", "message": "", "preferences": [], "errors": {}, "needsFocus": false }'
+            data-wp-watch="callbacks.focusWhenVisible">
+            <!-- Progress -->
+            <div class="wizard-steps">
+                <div class="wizard-step" data-wp-context='{ "stepNumber": 1 }' data-wp-class--active="state.isStepActive" data-wp-class--completed="state.isStepCompleted">
+                    <span class="wizard-step-number">I</span>
+                    <span class="text-xs italic">Identity</span>
+                </div>
+                <div class="wizard-step" data-wp-context='{ "stepNumber": 2 }' data-wp-class--active="state.isStepActive" data-wp-class--completed="state.isStepCompleted">
+                    <span class="wizard-step-number">II</span>
+                    <span class="text-xs italic">Contact</span>
+                </div>
+                <div class="wizard-step" data-wp-context='{ "stepNumber": 3 }' data-wp-class--active="state.isStepActive" data-wp-class--completed="context.isComplete">
+                    <span class="wizard-step-number">III</span>
+                    <span class="text-xs italic">Complete</span>
+                </div>
+            </div>
+
+            <!-- Step 1 -->
+            <div data-wp-context='{ "stepNumber": 1 }' data-wp-bind--hidden="!state.shouldShowStepPanel">
+                <label class="text-sm italic">Your Name</label>
+                <input type="text" class="input mt-xs" data-wp-context='{ "fieldName": "name" }' data-wp-bind--value="context.name" data-wp-on--input="actions.updateField" data-wp-on--keydown="actions.handleEnter" placeholder="By what name shall we know you?">
+                <p class="text-xs text-wp-blue italic" data-wp-bind--hidden="!context.errors.name" data-wp-text="context.errors.name">_</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div data-wp-context='{ "stepNumber": 2 }' data-wp-bind--hidden="!state.shouldShowStepPanel" hidden="true">
+                <label class="text-sm italic">Your Email</label>
+                <input type="email" class="input mt-xs" data-wp-context='{ "fieldName": "email" }' data-wp-class--input--error="state.hasFieldError" data-wp-bind--value="context.email" data-wp-on--input="actions.updateField" data-wp-on--keydown="actions.handleEnter" placeholder="How shall we reach you?">
+                <p class="text-xs text-wp-blue italic" data-wp-bind--hidden="!context.errors.email" data-wp-text="context.errors.email">_</p>
+            </div>
+
+            <!-- Step 3 / Complete -->
+            <div data-wp-bind--hidden="!state.shouldShowCompletePanel" hidden="true">
+                <p class="text-sm text-center italic">Ready to seal your submission?</p>
+                <p class="text-xs text-faint text-center mt-sm">Name: <span class="font-display" data-wp-text="context.name">_</span></p>
+                <p class="text-xs text-faint text-center">Email: <span data-wp-text="context.email">_</span></p>
+            </div>
+
+            <div data-wp-bind--hidden="!context.isComplete" class="text-center" hidden="true">
+                <p class="text-teal italic">Your submission is complete. Farewell.</p>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex justify-between mt-md" data-wp-bind--hidden="context.isComplete">
+                <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.prevStep" data-wp-bind--disabled="!state.canGoBack" disabled="true">← Back</button>
+                <div class="flex gap-sm">
+                    <button class="btn btn--primary btn--sm" data-wp-bind--hidden="!state.shouldShowContinueButton" data-wp-bind--disabled="!state.canGoForward" data-wp-on--click="actions.nextStep">Continue →</button>
+                    <button class="btn btn--secondary btn--sm" data-wp-bind--hidden="!state.shouldShowSubmitButton" data-wp-class--no-outline="state.shouldShowSubmitting" data-wp-on--click="actions.submitForm" hidden="true">
+                        <span data-wp-bind--hidden="!state.shouldShowSubmitting">Submitting...</span>
+                        <span data-wp-bind--hidden="state.shouldShowSubmitting">Submit</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">Multi-step State</span>
+        <span class="directive-tag directive-tag--curated">Validation</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-watch</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--active</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--completed</span>
+        <span class="directive-tag directive-tag--full">data-wp-class</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--hidden</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--value</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--disabled</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--input</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--keydown</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+    </div>
+</div>

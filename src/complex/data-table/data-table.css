@@ -1,0 +1,42 @@
+/* Data Table */
+.data-table {
+  width: 100%;
+  font-size: 0.875rem;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-align: left;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--paper-warm);
+  border-bottom: var(--border-width-thick) solid var(--border-dark);
+  cursor: pointer;
+  user-select: none;
+}
+
+.data-table th:hover {
+  background: var(--surface-hover);
+}
+
+.data-table td {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.data-table tr:hover td {
+  background: var(--paper-warm);
+}
+
+.sort-icon {
+  display: inline-block;
+  margin-left: var(--space-xs);
+  opacity: 0.3;
+  font-size: 0.75rem;
+}
+
+.sort-icon.active {
+  opacity: 1;
+  color: var(--wp-blue);
+}

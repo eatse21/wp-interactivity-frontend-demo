@@ -1,0 +1,17 @@
+/* Demo Box for class toggle */
+.demo-box {
+  padding: var(--space-md);
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.demo-box.active {
+  background: rgba(0, 115, 170, 0.05);
+  border-color: var(--wp-blue);
+}
+
+.demo-box.highlighted {
+  background: rgba(99, 102, 241, 0.05);
+  border-color: var(--indigo);
+}

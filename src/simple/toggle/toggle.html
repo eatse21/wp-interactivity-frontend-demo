@@ -1,0 +1,28 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">toggle()</span>
+        <span class="module__number">No. II</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Toggle</h3>
+        <p class="module__description">
+            Like a whispered secret, content revealed and concealed at will.
+        </p>
+        <div class="demo-area" data-wp-interactive="toggle" data-wp-context='{ "isOpen": false }'>
+            <button class="btn btn--primary" data-wp-on--click="actions.toggle" data-wp-bind--aria-expanded="context.isOpen">
+                <span data-wp-text="state.toggleButtonText">Reveal</span> Content
+            </button>
+            <div class="toggle-panel" data-wp-bind--hidden="!context.isOpen" hidden="true">
+                <p>Behold! Hidden words now visible to those who seek them.</p>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-bind--hidden</span>
+        <span class="directive-tag directive-tag--curated">data-wp-bind--aria-expanded</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+    </div>
+</div>

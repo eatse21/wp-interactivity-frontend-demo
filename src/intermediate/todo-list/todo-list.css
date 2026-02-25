@@ -1,0 +1,53 @@
+/* Todo List */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-bottom: var(--border-width) solid var(--border);
+  background: var(--surface);
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+  font-size: 0.75rem;
+}
+
+.todo-checkbox.checked {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--paper);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 0.9375rem;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.todo-delete {
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  color: var(--wp-blue);
+}
+
+.todo-item:hover .todo-delete {
+  opacity: 1;
+}

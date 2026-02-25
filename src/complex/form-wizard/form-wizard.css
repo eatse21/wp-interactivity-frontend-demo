@@ -1,0 +1,43 @@
+/* Form Wizard */
+.wizard-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.wizard-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--ink-faint);
+  transition: color var(--transition-fast);
+}
+
+.wizard-step.active {
+  color: var(--wp-blue);
+}
+
+.wizard-step.completed {
+  color: var(--teal);
+}
+
+.wizard-step-number {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+}
+
+.wizard-step.active .wizard-step-number {
+  background: var(--wp-blue);
+  color: var(--paper);
+}

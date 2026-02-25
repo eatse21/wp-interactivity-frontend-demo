@@ -1,0 +1,225 @@
+/* ===== UTILITIES ===== */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-xs { gap: 0.25rem; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+.mt-xs { margin-top: var(--space-xs); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.text-center { text-align: center; }
+.text-muted { color: var(--ink-muted); }
+.text-faint { color: var(--ink-faint); }
+.text-wp-blue { color: var(--wp-blue); }
+.text-teal { color: var(--teal); }
+.font-mono { font-family: var(--font-mono); }
+.font-display { font-family: var(--font-display); }
+.text-lg { font-size: 1.125rem; }
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+.text-base { font-size: 1rem; }
+.italic { font-style: italic; }
+.hidden { display: none !important; }
+[hidden] { display: none !important; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  :root {
+    --space-2xl: 2rem;
+    --space-3xl: 2.5rem;
+    --space-4xl: 3rem;
+  }
+
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-header__title {
+    font-size: 2rem;
+  }
+
+  html {
+    font-size: 16px;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.4s ease forwards;
+}
+
+/* ===== DECORATIVE ELEMENTS ===== */
+.fleuron {
+  color: var(--teal);
+  opacity: 0.5;
+  font-size: 1.25rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+  margin: var(--space-lg) 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(0, 115, 170, 0.15);
+  color: var(--ink);
+}
+
+/* ===== DIRECTIVE TOGGLE FAB ===== */
+.directive-toggle-fab {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  z-index: 1000;
+}
+
+.directive-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--surface);
+  border: var(--border-width-thick) solid var(--wp-blue);
+  color: var(--wp-blue);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-fast);
+}
+
+.directive-toggle-btn:hover {
+  background: var(--wp-blue);
+  color: var(--paper);
+}
+
+.directive-toggle-btn:focus-visible {
+  outline: 2px solid var(--wp-blue);
+  outline-offset: 2px;
+}
+
+.directive-toggle-btn[aria-pressed="true"] {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--paper);
+}
+
+.directive-toggle-icon {
+  font-size: 1rem;
+}
+
+/* ===== DIRECTIVE TAG STATES ===== */
+body:not(.show-all-directives) .directive-tag--full {
+  /* Full tags hidden by default */
+    display: inline;
+    width:0;
+    height:0;
+    visibility: hidden;
+}
+
+/* Show full tags when wrapper has the class */
+.show-all-directives .directive-tag--full {
+  display: inline-flex;
+  opacity: 0;
+  animation: staggered-directives 1.5s ease forwards;
+}
+
+@keyframes staggered-directives {
+  to {
+      opacity: 1;
+  }
+}
+
+
+/* Staggered animation delays for full directive tags */
+.show-all-directives .module__directives .directive-tag--full:nth-child(1) { animation-delay: 0.05s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(2) { animation-delay: 0.1s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(3) { animation-delay: 0.15s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(4) { animation-delay: 0.2s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(5) { animation-delay: 0.25s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(6) { animation-delay: 0.3s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(7) { animation-delay: 0.35s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(8) { animation-delay: 0.4s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(9) { animation-delay: 0.45s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(10) { animation-delay: 0.5s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(11) { animation-delay: 0.55s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(12) { animation-delay: 0.6s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(13) { animation-delay: 0.65s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(14) { animation-delay: 0.7s; }
+.show-all-directives .module__directives .directive-tag--full:nth-child(15) { animation-delay: 0.75s; }
+
+/* ===== GITHUB CORNER ===== */
+.github-corner {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1001;
+  text-decoration: none;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+.github-corner svg {
+  fill: var(--wp-blue, #0073aa);
+  color: var(--paper, #FAFBFC);
+}
+
+@keyframes octocat-wave {
+  0%, 100% { transform: rotate(0); }
+  20%, 60% { transform: rotate(-25deg); }
+  40%, 80% { transform: rotate(10deg); }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}

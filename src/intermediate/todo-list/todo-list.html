@@ -1,0 +1,64 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">todoList()</span>
+        <span class="module__number">No. VI</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Task List</h3>
+        <p class="module__description">
+            Duties inscribed, completed, and struck through—the rhythm of accomplishment.
+        </p>
+        <div class="demo-area" data-wp-interactive="todoList" data-wp-context='{ "todos": [], "newTodoText": "", "nextId": 1 }'>
+            <div class="flex gap-sm">
+                <input
+                    type="text"
+                    class="input"
+                    placeholder="Add a new task..."
+                    data-wp-bind--value="context.newTodoText"
+                    data-wp-on--input="actions.updateNewTodoText"
+                    data-wp-on--keydown="actions.addTodoOnEnter"
+                >
+                <button class="btn btn--primary" data-wp-on--click="actions.addTodo">Add</button>
+            </div>
+
+            <div class="mt-md">
+                <template data-wp-each="context.todos" data-wp-each-key="context.item.id">
+                    <div class="todo-item">
+                        <div
+                            class="todo-checkbox"
+                            data-wp-class--checked="context.item.completed"
+                            data-wp-on--click="actions.toggleTodo"
+                        >
+                            <span data-wp-bind--hidden="!context.item.completed">✓</span>
+                        </div>
+                        <span class="todo-text" data-wp-class--completed="context.item.completed" data-wp-text="context.item.text"></span>
+                        <button class="btn btn--ghost btn--sm todo-delete" data-wp-on--click="actions.deleteTodo">×</button>
+                    </div>
+                </template>
+            </div>
+
+            <div class="flex justify-between items-center mt-md" data-wp-bind--hidden="state.hasNoTodos" hidden="true">
+                <p class="text-xs text-faint italic">
+                    <span data-wp-text="state.remainingItems">0</span> tasks remaining
+                </p>
+                <div class="flex gap-xs">
+                    <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.toggleAll">Toggle All</button>
+                    <button class="btn btn--ghost btn--sm" data-wp-bind--disabled="!state.hasCompletedItems" data-wp-on--click="actions.clearCompleted">Clear Completed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-each</span>
+        <span class="directive-tag directive-tag--curated">data-wp-each-key</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--value</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--hidden</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--input</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--keydown</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-class</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+    </div>
+</div>

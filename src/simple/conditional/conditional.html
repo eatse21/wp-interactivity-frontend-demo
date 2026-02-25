@@ -1,0 +1,53 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">conditional()</span>
+        <span class="module__number">No. V</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Conditional</h3>
+        <p class="module__description">
+            Gates that open and close, fields that accept or refuse.
+        </p>
+        <div class="demo-area" data-wp-interactive="conditional" data-wp-context='{ "isDisabled": false, "isReadonly": false, "isRequired": false, "inputValue": "" }'>
+            <input
+                type="text"
+                class="input"
+                placeholder="A field of possibilities..."
+                data-wp-class--input--disabled="context.isDisabled"
+                data-wp-class--input--readonly="context.isReadonly"
+                data-wp-class--input--required="context.isRequired"
+                data-wp-bind--disabled="context.isDisabled"
+                data-wp-bind--readonly="context.isReadonly"
+                data-wp-bind--required="context.isRequired"
+                data-wp-bind--value="context.inputValue"
+                data-wp-on--input="actions.updateInput"
+            >
+            <div class="flex flex-col gap-xs mt-md text-sm">
+                <label>
+                    <input type="checkbox" data-wp-bind--checked="context.isDisabled" data-wp-on--click="actions.toggleDisabled">
+                    <span class="italic">Disabled</span>
+                </label>
+                <label>
+                    <input type="checkbox" data-wp-bind--checked="context.isReadonly" data-wp-on--click="actions.toggleReadonly">
+                    <span class="italic">Readonly</span>
+                </label>
+                <label>
+                    <input type="checkbox" data-wp-bind--checked="context.isRequired" data-wp-on--click="actions.toggleRequired">
+                    <span class="italic">Required</span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-bind--disabled</span>
+        <span class="directive-tag directive-tag--curated">data-wp-bind--readonly</span>
+        <span class="directive-tag directive-tag--curated">data-wp-bind--required</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-class</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--value</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--checked</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--input</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+    </div>
+</div>

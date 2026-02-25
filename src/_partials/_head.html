@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactivity API — A Demo</title>
+    <meta name="description" content="Interactive examples showcasing @wordpress/interactivity outside WordPress, on a simple static HTML page.">
+
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "@wordpress/interactivity": "./assets/interactivity.min.js"
+            }
+        }
+    </script>
+    <link rel="modulepreload" href="./assets/interactivity.min.js" id="@wordpress/interactivity-js-modulepreload" fetchpriority="low">
+    <script type="application/json" id="wp-script-module-data-@wordpress/interactivity">
+        {
+            "state": {
+                "directiveToggle": {
+                    "showAllDirectives": false
+                }
+            }
+        }
+    </script>
+    </head>

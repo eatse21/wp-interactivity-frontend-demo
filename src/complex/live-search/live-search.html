@@ -1,0 +1,66 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">liveSearch()</span>
+        <span class="module__number">No. XIII</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Explorer</h3>
+        <p class="module__description">
+            Type and discover—suggestions emerge from the depths of data.
+        </p>
+        <div class="demo-area" data-wp-interactive="liveSearch" data-wp-context='{ "query": "", "results": [], "isLoading": false, "selectedIndex": -1, "isOpen": false, "recentSearches": [] }' data-wp-init="callbacks.init" data-wp-on-document--click="actions.closeOnOutsideClick">
+            <div class="relative">
+                <input
+                    type="text"
+                    class="input"
+                    placeholder="Search for something..."
+                    data-wp-bind--value="context.query"
+                    data-wp-on--input="actions.updateQuery"
+                    data-wp-on--keydown="actions.handleKeydown"
+                    data-wp-on--focus="actions.focusInput"
+                >
+                <span class="loading-spinner absolute" style="right: 12px; top: 12px;" data-wp-bind--hidden="!context.isLoading" hidden="true"></span>
+            </div>
+
+            <div class="search-results" data-wp-bind--hidden="!state.showDropdown">
+                <template data-wp-each="context.results" data-wp-each-key="context.item.id">
+                    <div
+                        class="search-result-item"
+                        data-wp-class--active="state.isResultSelected"
+                        data-wp-on--click="actions.selectResult"
+                    >
+                        <div class="text-sm font-display" data-wp-text="context.item.title">_</div>
+                        <div class="text-xs text-faint italic" data-wp-text="context.item.description">_</div>
+                    </div>
+                </template>
+            </div>
+
+            <div class="mt-sm" data-wp-bind--hidden="!state.hasRecentSearches">
+                <p class="text-xs text-faint italic">Recent inquiries:</p>
+                <div class="flex gap-xs flex-wrap mt-xs">
+                    <template data-wp-each="context.recentSearches">
+                        <span class="badge badge--success" data-wp-text="context.item">_</span>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">Async Generator</span>
+        <span class="directive-tag directive-tag--curated">splitTask()</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-init</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--value</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--hidden</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--input</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--keydown</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--focus</span>
+        <span class="directive-tag directive-tag--full">data-wp-on-document--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-each</span>
+        <span class="directive-tag directive-tag--full">data-wp-each-key</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--active</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+    </div>
+</div>

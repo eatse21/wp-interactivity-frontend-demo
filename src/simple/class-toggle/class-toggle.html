@@ -1,0 +1,34 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">classToggle()</span>
+        <span class="module__number">No. IV</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Transformation</h3>
+        <p class="module__description">
+            Elements that shift their nature, like moods upon a face.
+        </p>
+        <div class="demo-area" data-wp-interactive="classToggle" data-wp-context='{ "isActive": false, "isHighlighted": false, "clickCount": 0 }'>
+            <div
+                class="demo-box"
+                data-wp-class--active="context.isActive"
+                data-wp-class--highlighted="context.isHighlighted"
+            >
+                <p class="text-sm">State: <span class="font-display" data-wp-text="state.activeStateText">Dormant</span></p>
+                <p class="text-xs text-faint">Touches: <span data-wp-text="context.clickCount">0</span></p>
+            </div>
+            <div class="flex gap-sm mt-md">
+                <button class="btn btn--primary btn--sm" data-wp-on--click="actions.toggleActive">Toggle State</button>
+                <button class="btn btn--secondary btn--sm" data-wp-on--click="actions.toggleHighlight">Highlight</button>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-class--active</span>
+        <span class="directive-tag directive-tag--curated">data-wp-class--highlighted</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+    </div>
+</div>

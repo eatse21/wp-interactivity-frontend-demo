@@ -1,0 +1,59 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">searchFilter()</span>
+        <span class="module__number">No. IX</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Filter</h3>
+        <p class="module__description">
+            Distill the essence from the whole—find what seeks to be found.
+        </p>
+        <div class="demo-area" data-wp-interactive="searchFilter" data-wp-context='{ "searchTerm": "", "items": [{"id":1,"name":"React","category":"frontend"},{"id":2,"name":"Node.js","category":"backend"},{"id":3,"name":"PostgreSQL","category":"database"},{"id":4,"name":"Vue","category":"frontend"},{"id":5,"name":"Express","category":"backend"}], "selectedCategories": ["all"] }'>
+            <input
+                type="text"
+                class="input"
+                placeholder="Seek and ye shall find..."
+                data-wp-bind--value="context.searchTerm"
+                data-wp-on--input="actions.updateSearch"
+            >
+
+            <div class="flex gap-xs mt-sm flex-wrap">
+                <button class="btn btn--ghost btn--sm" data-wp-context='{ "category": "all" }' data-wp-class--active="state.isCategoryActive" data-wp-on--click="actions.setCategory">All</button>
+                <button class="btn btn--ghost btn--sm" data-wp-context='{ "category": "frontend" }' data-wp-class--active="state.isCategoryActive" data-wp-on--click="actions.setCategory">Frontend</button>
+                <button class="btn btn--ghost btn--sm" data-wp-context='{ "category": "backend" }' data-wp-class--active="state.isCategoryActive" data-wp-on--click="actions.setCategory">Backend</button>
+                <button class="btn btn--ghost btn--sm" data-wp-context='{ "category": "database" }' data-wp-class--active="state.isCategoryActive" data-wp-on--click="actions.setCategory">Database</button>
+            </div>
+
+            <div class="flex justify-between items-center mt-sm">
+                <p class="text-xs text-faint italic">
+                    <span data-wp-text="state.filteredCount">0</span> of <span data-wp-text="state.itemCount">0</span> items
+                </p>
+                <button class="btn btn--ghost btn--sm" data-wp-bind--hidden="!state.hasActiveFilters" data-wp-on--click="actions.resetFilters">Reset</button>
+            </div>
+
+            <div class="mt-md">
+                <template data-wp-each="state.filteredItems" data-wp-each-key="context.item.id">
+                    <div class="todo-item">
+                        <span class="text-sm font-display" data-wp-text="context.item.name">_</span>
+                        <span class="badge badge--success" data-wp-text="context.item.category">_</span>
+                    </div>
+                </template>
+                <p class="text-xs text-faint italic text-center" data-wp-bind--hidden="state.hasResults">No items match your search</p>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">Derived State</span>
+        <span class="directive-tag directive-tag--curated">Getters</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--value</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--input</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--active</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-each</span>
+        <span class="directive-tag directive-tag--full">data-wp-each-key</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--hidden</span>
+    </div>
+</div>

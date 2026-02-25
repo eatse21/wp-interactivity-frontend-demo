@@ -1,0 +1,34 @@
+/* Tab Navigation */
+.tab-nav {
+  display: flex;
+  border-bottom: var(--border-width) solid var(--border);
+  gap: var(--space-xs);
+}
+
+.tab-btn {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-md);
+  background: transparent;
+  border: none;
+  color: var(--ink-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+  color: var(--ink);
+}
+
+.tab-btn.active {
+  color: var(--wp-blue);
+  border-bottom-color: var(--wp-blue);
+}
+
+.tab-panel {
+  padding: var(--space-md);
+  background: var(--surface);
+}

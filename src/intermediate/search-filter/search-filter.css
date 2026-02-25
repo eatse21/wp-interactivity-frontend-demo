@@ -1,0 +1,26 @@
+/* Search Filter - uses shared components */
+
+/* Live Search Results */
+.search-results {
+  max-height: 200px;
+  overflow-y: auto;
+  border: var(--border-width) solid var(--border);
+  margin-top: var(--space-sm);
+  background: var(--surface);
+}
+
+.search-result-item {
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: var(--border-width) solid var(--border);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.search-result-item:hover,
+.search-result-item.active {
+  background: var(--paper-warm);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}

@@ -1,0 +1,79 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">dataTable()</span>
+        <span class="module__number">No. XIV</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Registry</h3>
+        <p class="module__description">
+            A ledger of records—sortable, searchable, paginated through time.
+        </p>
+        <div class="demo-area" data-wp-interactive="dataTable" data-wp-context='{ "sortColumn": "", "sortDirection": null, "currentPage": 1, "pageSize": 5, "selectedRows": [], "searchTerm": "", "statusFilter": "" }'>
+            <input
+                type="text"
+                class="input"
+                placeholder="Search the registry..."
+                data-wp-bind--value="context.searchTerm"
+                data-wp-on--input="actions.updateSearch"
+            >
+
+            <div class="flex gap-xs mt-sm mb-sm flex-wrap">
+                <button class="btn btn--ghost btn--sm" data-wp-context='{ "filterValue": "" }' data-wp-class--active="state.isFilterActive" data-wp-on--click="actions.setStatusFilter">All</button>
+                <button class="btn btn--ghost btn--sm" data-wp-context='{ "filterValue": "active" }' data-wp-class--active="state.isFilterActive" data-wp-on--click="actions.setStatusFilter">Active</button>
+                <button class="btn btn--ghost btn--sm" data-wp-context='{ "filterValue": "inactive" }' data-wp-class--active="state.isFilterActive" data-wp-on--click="actions.setStatusFilter">Inactive</button>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th data-wp-context='{ "columnName": "name" }' data-wp-on--click="actions.sortBy">
+                            Name <span class="sort-icon" data-wp-class--active="state.isSortColumnActive" data-wp-text="state.sortIcon">↕</span>
+                        </th>
+                        <th data-wp-context='{ "columnName": "role" }' data-wp-on--click="actions.sortBy">
+                            Role <span class="sort-icon" data-wp-class--active="state.isSortColumnActive" data-wp-text="state.sortIcon">↕</span>
+                        </th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template data-wp-each="state.paginatedData" data-wp-each-key="context.item.id">
+                        <tr>
+                            <td class="font-display" data-wp-text="context.item.name">_</td>
+                            <td data-wp-text="context.item.role">_</td>
+                            <td>
+                                <span class="badge" data-wp-class--badge--success="state.isStatusActive" data-wp-class--badge--warning="state.isStatusPending" data-wp-class--badge--error="state.isStatusInactive" data-wp-text="context.item.status">_</span>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+
+            <div class="flex justify-between items-center mt-sm">
+                <p class="text-xs text-faint italic">
+                    <span data-wp-text="state.paginatedData.length">0</span> of <span data-wp-text="state.totalCount">0</span> entries
+                </p>
+                <div class="flex gap-xs items-center">
+                    <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.prevPage" data-wp-bind--disabled="state.isFirstPage">←</button>
+                    <span class="text-sm font-mono"><span data-wp-text="context.currentPage">1</span> / <span data-wp-text="state.totalPages">1</span></span>
+                    <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.nextPage" data-wp-bind--disabled="state.isLastPage">→</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">Sorting</span>
+        <span class="directive-tag directive-tag--curated">Pagination</span>
+        <span class="directive-tag directive-tag--curated">Filtering</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--value</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--disabled</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--input</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--active</span>
+        <span class="directive-tag directive-tag--full">data-wp-each</span>
+        <span class="directive-tag directive-tag--full">data-wp-each-key</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--badge</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+/* Animation Demo */
+.animation-box {
+  width: 60px;
+  height: 60px;
+  background: var(--wp-blue);
+}
+
+.animation-box.paused {
+  animation-play-state: paused;
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 4px;
+  background: var(--border);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: var(--wp-blue);
+}

@@ -1,0 +1,50 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">dragDrop()</span>
+        <span class="module__number">No. XI</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Reordering</h3>
+        <p class="module__description">
+            Order is not given—it is shaped.
+        </p>
+        <div class="demo-area" data-wp-interactive="dragDrop" data-wp-context='{ "items": [{"id":"1","text":"First Element","color":"wp-blue"},{"id":"2","text":"Second Element","color":"indigo"},{"id":"3","text":"Third Element","color":"teal"},{"id":"4","text":"Fourth Element","color":"ink"}], "draggedId": null, "dropTargetId": null, "isDragging": false }'>
+            <template data-wp-each="context.items" data-wp-each-key="context.item.id">
+                <div
+                    class="draggable flex justify-between items-center"
+                    draggable="true"
+                    data-wp-class--dragging="state.isBeingDragged"
+                    data-wp-class--drop-target="state.isDropTarget"
+                    data-wp-on--dragstart="actions.handleDragStart"
+                    data-wp-on--dragover="actions.handleDragOver"
+                    data-wp-on--dragleave="actions.handleDragLeave"
+                    data-wp-on--drop="actions.handleDrop"
+                    data-wp-on--dragend="actions.handleDragEnd"
+                >
+                    <span class="font-display" data-wp-text="context.item.text">_</span>
+                    <div class="flex gap-xs">
+                        <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.moveUp" data-wp-bind--disabled="!state.canMoveUp">↑</button>
+                        <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.moveDown" data-wp-bind--disabled="!state.canMoveDown">↓</button>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-each</span>
+        <span class="directive-tag directive-tag--curated">Array Manipulation</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-each-key</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--dragging</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--drop-target</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--dragstart</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--dragover</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--dragleave</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--drop</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--dragend</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--disabled</span>
+    </div>
+</div>

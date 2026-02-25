@@ -1,0 +1,153 @@
+/* ===== BUTTONS ===== */
+.btn {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: var(--space-sm) var(--space-md);
+  border: var(--border-width-thick) solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  outline: none;
+  background: transparent;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--wp-blue);
+  outline-offset: 2px;
+}
+
+.btn--primary {
+  border-color: var(--wp-blue);
+  color: var(--wp-blue);
+}
+
+.btn--primary:hover {
+  background: var(--wp-blue);
+  color: var(--paper);
+}
+
+.btn--secondary {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.btn--secondary:hover {
+  background: var(--teal);
+  color: var(--paper);
+}
+
+.btn--secondary:not(.no-outline):focus {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.btn--ghost {
+  border-color: var(--border-dark);
+  color: var(--ink-muted);
+}
+
+.btn--ghost:hover {
+  border-color: var(--ink-muted);
+  color: var(--ink);
+  background: var(--surface-hover);
+}
+
+.btn--ghost.active {
+  border-color: var(--wp-blue);
+  color: var(--wp-blue);
+  background: rgba(0, 115, 170, 0.08);
+}
+
+.btn--sm {
+  font-size: 0.8125rem;
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.btn--icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== INPUTS ===== */
+.input {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--surface);
+  border: var(--border-width-thick) solid var(--border);
+  color: var(--ink);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--wp-blue);
+  box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.1);
+}
+
+.input::placeholder {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.input--error {
+  border-color: var(--wp-blue);
+  box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.15);
+}
+
+.input--disabled {
+  background: var(--border);
+  color: var(--ink-faint);
+  cursor: not-allowed;
+}
+
+.input--readonly {
+  background: var(--paper-warm);
+  border-style: dashed;
+}
+
+.input--required {
+  border-left: 3px solid var(--teal);
+}
+
+/* ===== BADGES & TAGS ===== */
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--paper-warm);
+  border: var(--border-width) solid var(--border);
+  color: var(--ink-muted);
+}
+
+.badge--success {
+  background: rgba(13, 148, 136, 0.08);
+  color: var(--teal);
+  border-color: rgba(13, 148, 136, 0.2);
+}
+
+.badge--warning {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--indigo);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.badge--error {
+  background: rgba(0, 115, 170, 0.08);
+  color: var(--wp-blue);
+  border-color: rgba(0, 115, 170, 0.2);
+}

@@ -1,0 +1,9 @@
+/* Toggle Panel */
+.toggle-panel {
+  padding: var(--space-md);
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  margin-top: var(--space-md);
+  font-style: italic;
+  color: var(--ink-muted);
+}

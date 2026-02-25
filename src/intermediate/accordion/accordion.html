@@ -1,0 +1,69 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">accordion()</span>
+        <span class="module__number">No. VIII</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Accordion</h3>
+        <p class="module__description">
+            Sections that breathe—expanding and contracting like lungs of text.
+        </p>
+        <div class="demo-area" data-wp-interactive="accordion" data-wp-context='{ "openPanels": [], "allowMultiple": false }'>
+            <div class="accordion-item" data-wp-context='{ "panelId": "panel-1" }' data-wp-class--open="state.isPanelOpen">
+                <div
+                    class="accordion-header"
+                    data-wp-on--click="actions.togglePanel"
+                    data-wp-bind--aria-expanded="state.isPanelOpen"
+                >
+                    <span>First Section</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" data-wp-bind--hidden="!state.isPanelOpen" hidden="true">
+                    <p>"The art of programming is the art of organizing complexity."</p>
+                </div>
+            </div>
+
+            <div class="accordion-item" data-wp-context='{ "panelId": "panel-2" }' data-wp-class--open="state.isPanelOpen">
+                <div
+                    class="accordion-header"
+                    data-wp-on--click="actions.togglePanel"
+                    data-wp-bind--aria-expanded="state.isPanelOpen"
+                >
+                    <span>Second Section</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" data-wp-bind--hidden="!state.isPanelOpen" hidden="true">
+                    <p>"Simplicity is the ultimate sophistication."</p>
+                </div>
+            </div>
+
+            <div class="accordion-item" data-wp-context='{ "panelId": "panel-3" }' data-wp-class--open="state.isPanelOpen">
+                <div
+                    class="accordion-header"
+                    data-wp-on--click="actions.togglePanel"
+                    data-wp-bind--aria-expanded="state.isPanelOpen"
+                >
+                    <span>Third Section</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content" data-wp-bind--hidden="!state.isPanelOpen" hidden="true">
+                    <p>"Code is poetry."</p>
+                </div>
+            </div>
+
+            <label class="text-xs text-faint mt-sm flex items-center gap-sm italic">
+                <input type="checkbox" data-wp-bind--checked="context.allowMultiple" data-wp-on--click="actions.toggleMultipleMode">
+                Allow multiple sections open
+            </label>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-bind--aria-expanded</span>
+        <span class="directive-tag directive-tag--curated">data-wp-class--open</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--hidden</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--checked</span>
+    </div>
+</div>

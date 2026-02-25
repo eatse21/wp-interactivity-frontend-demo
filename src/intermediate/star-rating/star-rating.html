@@ -1,0 +1,51 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">starRating()</span>
+        <span class="module__number">No. X</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Rating</h3>
+        <p class="module__description">
+            Assign worth with a gesture—stars aligned to your judgment.
+        </p>
+        <div class="demo-area" data-wp-interactive="starRating"
+            data-wp-context='{ "rating": 0, "hoverRating": 0, "maxRating": 5, "hasSubmitted": false, "ratingTexts": ["", "Poor", "Fair", "Good", "Very Good", "Excellent"] }'
+            data-wp-class--bad="state.isBad" data-wp-class--average="state.isAverage" data-wp-class--good="state.isGood">
+            <div class="flex justify-center gap-sm" data-wp-on--mouseleave="actions.clearHoverRating">
+                <template data-wp-each="state.stars" data-wp-each-key="context.item">
+                    <span
+                        class="star"
+                        data-wp-class--filled="state.isStarFilled"
+                        data-wp-on--click="actions.setRating"
+                        data-wp-on--mouseover="actions.setHoverRating"
+                    >★</span>
+                </template>
+            </div>
+
+            <p class="text-center mt-sm text-lg font-display italic">
+                <span data-wp-text="state.ratingText">_</span>
+                <span data-wp-bind--hidden="state.hasNoRating">(<span data-wp-text="context.rating">0</span>/5)</span>
+            </p>
+
+            <div class="flex justify-center gap-sm mt-md" data-wp-bind--hidden="!state.shouldShowSubmitButton" hidden="true">
+                <button class="btn btn--primary btn--sm" data-wp-on--click="actions.submitRating">Submit Rating</button>
+            </div>
+
+            <p class="text-center text-sm text-teal italic" data-wp-bind--hidden="!context.hasSubmitted" hidden="true">
+                Your rating has been recorded with gratitude.
+            </p>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-on--mouseover</span>
+        <span class="directive-tag directive-tag--curated">data-wp-on--mouseleave</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-class</span>
+        <span class="directive-tag directive-tag--full">data-wp-each</span>
+        <span class="directive-tag directive-tag--full">data-wp-each-key</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--hidden</span>
+    </div>
+</div>

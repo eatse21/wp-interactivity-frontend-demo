@@ -1,0 +1,277 @@
+<!-- 16. KANBAN MASTERPIECE - Full Width Section -->
+<section class="demo-section demo-section--full-width">
+    <div class="demo-section__header">
+        <span class="demo-section__icon">🏆</span>
+        <h2 class="demo-section__title">The Masterpiece</h2>
+    </div>
+    <p class="demo-section__description">
+        A full-featured Kanban board demonstrating <strong>all directives and patterns</strong> in one cohesive experience.
+        Drag cards between columns, search and filter, create/edit/delete cards, and use keyboard shortcuts (Ctrl+Z/Y for undo/redo, N for new card).
+    </p>
+
+    <div class="kanban-container" data-wp-interactive="kanban"
+        data-wp-on-window--keydown="actions.handleGlobalKeydown"
+        data-wp-context='{ "columns": [{"id":"todo","title":"To Do","color":"#3b82f6","cards":[{"id":"card-1","title":"Design system audit","description":"Review and document current design patterns","priority":"high","assignee":"Alice","createdAt":1739500800000},{"id":"card-2","title":"API documentation","description":"Write docs for new endpoints","priority":"medium","assignee":"Bob","createdAt":1739587200000},{"id":"card-3","title":"Fix login bug","priority":"high","createdAt":1739673600000}]},{"id":"in-progress","title":"In Progress","color":"#f59e0b","cards":[{"id":"card-4","title":"Implement search","description":"Add fuzzy search to data table","priority":"medium","assignee":"Charlie","createdAt":1739414400000},{"id":"card-5","title":"Refactor store","description":"Simplify state management","priority":"low","createdAt":1739673600000}]},{"id":"review","title":"Review","color":"#8b5cf6","cards":[{"id":"card-6","title":"PR #42: Dark mode","description":"Add dark mode toggle","priority":"medium","assignee":"Diana","createdAt":1739328000000}]},{"id":"done","title":"Done","color":"#10b981","cards":[{"id":"card-7","title":"Setup CI/CD","priority":"high","assignee":"Eve","createdAt":1739068800000},{"id":"card-8","title":"Database migration","description":"Migrate to PostgreSQL","priority":"high","createdAt":1739155200000}]}], "draggedCardId": null, "sourceColumnId": null, "dropTargetColumnId": null, "dropTargetCardId": null, "dropPosition": "before", "editingCardId": null, "editTitle": "", "editPriority": "medium", "editDescription": "", "editAssignee": "", "searchQuery": "", "filterPriority": "all", "history": [], "historyIndex": -1, "newCardModalOpen": false, "newCardColumnId": null, "newCardTitle": "", "newCardPriority": "medium", "newCardDescription": "", "newCardAssignee": "", "revisionPanelOpen": true, "hoveredRevisionId": null }'>
+
+        <!-- Toolbar -->
+        <div class="kanban-toolbar">
+            <div class="kanban-toolbar__search">
+                <input type="text" class="kanban-search input"
+                    placeholder="Search cards..."
+                    data-wp-bind--value="context.searchQuery"
+                    data-wp-on--input="actions.updateSearch">
+                <button class="btn btn--ghost btn--sm" data-wp-bind--hidden="!context.searchQuery" data-wp-on--click="actions.clearSearch">✕</button>
+            </div>
+            <div class="kanban-toolbar__filter">
+                <select class="kanban-filter input" data-wp-on--change="actions.setFilter" data-wp-bind--value="context.filterPriority">
+                    <option value="all">All priorities</option>
+                    <option value="high">High priority</option>
+                    <option value="medium">Medium priority</option>
+                    <option value="low">Low priority</option>
+                </select>
+            </div>
+            <div class="kanban-toolbar__actions">
+                <button class="btn btn--primary btn--sm" data-wp-on--click="actions.openNewCardModalFirstColumn" title="Add new card (N)">+ New Card</button>
+                <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.undo" data-wp-bind--disabled="!state.canUndo" title="Undo (Ctrl+Z)">↶ Undo</button>
+                <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.redo" data-wp-bind--disabled="!state.canRedo" title="Redo (Ctrl+Shift+Z)">↷ Redo</button>
+            </div>
+            <div class="kanban-toolbar__shortcuts">
+                <span class="kanban-shortcuts text-xs text-faint">
+                    <kbd>Ctrl+Z</kbd> Undo · <kbd>Ctrl+Shift+Z</kbd> Redo · <kbd>N</kbd> New card
+                </span>
+            </div>
+        </div>
+
+        <!-- Board -->
+        <div class="kanban-board">
+            <template data-wp-each="context.columns" data-wp-each-key="context.item.id">
+                <section class="kanban-column"
+                    data-wp-class--drop-target="state.isDropTarget"
+                    data-wp-on--dragover="actions.handleDragOver"
+                    data-wp-on--drop="actions.handleDropOnColumn">
+
+                    <header class="kanban-column__header">
+                        <h3 class="kanban-column__title" data-wp-text="context.item.title"></h3>
+                        <span class="kanban-column__count badge" data-wp-text="context.item.cards.length"></span>
+                        <button class="btn btn--ghost btn--icon kanban-column__add" data-wp-on--click="actions.openNewCardModal" title="Add card">+</button>
+                    </header>
+
+                    <div class="kanban-column__cards">
+                        <template data-wp-each="state.filteredCards" data-wp-each-key="context.item.id">
+                            <article class="kanban-card"
+                                data-wp-bind--draggable="state.isDraggable"
+                                data-wp-class--editing="!state.isDraggable"
+                                data-wp-class--revision-highlight="state.isRevisionHighlighted"
+                                data-wp-on--dragstart="actions.handleDragStart"
+                                data-wp-on--dragend="actions.handleDragEnd"
+                                data-wp-on--dragover="actions.handleCardDragOver"
+                                data-wp-on--dragleave="actions.handleCardDragLeave"
+                                data-wp-class--dragging="state.isBeingDragged"
+                                data-wp-class--drop-before="state.isDropBefore"
+                                data-wp-class--drop-after="state.isDropAfter"
+                                data-wp-class--high-priority="state.isHighPriority"
+                                data-wp-class--medium-priority="state.isMediumPriority"
+                                data-wp-class--low-priority="state.isLowPriority">
+
+                                <!-- Drop indicator before -->
+                                <div class="kanban-card__drop-indicator kanban-card__drop-indicator--before" data-wp-bind--hidden="!state.isDropBefore"></div>
+
+                                <!-- Card content -->
+                                <div class="kanban-card__content" data-wp-bind--hidden="state.isEditing">
+                                    <div class="kanban-card__header">
+                                        <span class="kanban-card__priority" data-wp-text="state.priorityBadge"></span>
+                                        <span class="kanban-card__title" data-wp-text="context.item.title"></span>
+                                    </div>
+                                    <p class="kanban-card__description" data-wp-bind--hidden="!context.item.description" data-wp-text="context.item.description"></p>
+                                    <div class="kanban-card__meta">
+                                        <span class="kanban-card__assignee" data-wp-bind--hidden="!context.item.assignee" data-wp-text="context.item.assignee"></span>
+                                    </div>
+                                    <div class="kanban-card__actions">
+                                        <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.editCard" title="Edit">✎</button>
+                                        <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.deleteCard" title="Delete">✕</button>
+                                    </div>
+                                </div>
+
+                                <!-- Edit mode -->
+                                <div class="kanban-card__edit" data-wp-bind--hidden="!state.isEditing" data-wp-on--blur="actions.handleEditBlur">
+                                    <input type="text" class="kanban-card__edit-input input"
+                                        data-wp-on--input="actions.setEditTitle"
+                                        data-wp-on--keydown="actions.handleGlobalKeydown">
+                                    <textarea class="kanban-card__edit-input input"
+                                        placeholder="Description..."
+                                        data-wp-bind--value="context.editDescription"
+                                              data-wp-on--input="actions.setEditDescription"></textarea>
+                                    <input type="text" class="kanban-card__edit-input input"
+                                        placeholder="Assignee..."
+                                        data-wp-bind--value="context.editAssignee"
+                                        data-wp-on--input="actions.setEditAssignee">
+                                    <select class="kanban-card__edit-priority input" data-wp-bind--value="context.editPriority"
+                                        data-wp-on--change="actions.setEditPriority">
+                                        <option value="high">High</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="low">Low</option>
+                                    </select>
+                                    <div class="kanban-card__edit-actions">
+                                        <button class="btn btn--primary btn--sm" data-wp-bind--disabled="!state.canSaveEdit" data-wp-on--click="actions.saveEdit">Save</button>
+                                        <button class="btn btn--ghost btn--sm" data-wp-on--click="actions.cancelEdit">Cancel</button>
+                                    </div>
+                                </div>
+
+                                <!-- Drop indicator after -->
+                                <div class="kanban-card__drop-indicator kanban-card__drop-indicator--after" data-wp-bind--hidden="!state.isDropAfter"></div>
+                            </article>
+                        </template>
+                    </div>
+                </section>
+            </template>
+        </div>
+
+        <!-- Revision History Panel -->
+        <div class="kanban-revision-panel" data-wp-watch="callbacks.scrollToCurrentRevision">
+            <button class="kanban-revision-toggle btn btn--ghost btn--sm" data-wp-on--click="actions.toggleRevisionPanel">
+                <span data-wp-text="state.revisionToggleIcon"></span>
+                Revision History
+                <span class="kanban-revision-count badge" data-wp-bind--hidden="!context.history.length" data-wp-text="context.history.length"></span>
+            </button>
+            <div class="kanban-revision-timeline" data-wp-bind--hidden="!state.isRevisionPanelOpen">
+                <div class="kanban-revision-empty" data-wp-bind--hidden="context.history.length">
+                    <span class="text-faint text-sm">No revisions yet. Make changes to see history.</span>
+                </div>
+                <button class="kanban-revision-initial"
+                    data-wp-bind--hidden="!context.history.length"
+                    data-wp-class--active="state.isAtInitialState"
+                    data-wp-on--click="actions.resetToInitial"
+                    title="Reset to initial state">
+                    <span class="kanban-revision-initial-icon">◉</span>
+                    <span>start</span>
+                </button>
+                <template data-wp-each="state.revisionList" data-wp-each-key="context.item.seqId">
+                    <div class="kanban-revision-item"
+                        data-wp-class--active="state.isCurrentRevision"
+                        data-wp-on--click="actions.jumpToRevision"
+                        data-wp-on--mouseenter="actions.setHoveredRevision"
+                        data-wp-on--mouseleave="actions.clearHoveredRevision"
+                        tabindex="0"
+                        role="button">
+                        <span class="revision-icon" data-wp-class--icon-move="state.showRevisionMove" data-wp-class--icon-create="state.isCreateCommand" data-wp-class--icon-edit="state.isEditCommand" data-wp-class--icon-delete="state.isDeleteCommand"></span>
+                        <span class="revision-content">
+                            <!-- Move: card + column movement -->
+                            <span class="revision-card" data-wp-bind--hidden="!state.showRevisionMove" data-wp-text="state.revisionCardTitle"></span>
+                            <span class="revision-move" data-wp-bind--hidden="!state.showRevisionMove">
+                                <span class="revision-in-column" data-wp-bind--hidden="!state.isInColumnMove">
+                                    <span class="revision-to" data-wp-text="state.revisionMoveColumn"></span>
+                                    <span class="revision-reorder">↕</span>
+                                </span>
+                                <span data-wp-bind--hidden="state.isInColumnMove">
+                                    <span class="revision-from" data-wp-text="state.revisionFromColumn"></span>
+                                    <span class="revision-arrow">→</span>
+                                    <span class="revision-to" data-wp-text="state.revisionToColumn"></span>
+                                </span>
+                            </span>
+                            <!-- Create: card + column -->
+                            <span class="revision-card" data-wp-bind--hidden="!state.isCreateCommand" data-wp-text="state.revisionCardTitle"></span>
+                            <span class="revision-create-col" data-wp-bind--hidden="!state.isCreateCommand">
+                                <span class="revision-to" data-wp-text="state.revisionCreateColumn"></span>
+                            </span>
+                            <!-- Edit: card + priority change -->
+                            <span class="revision-card" data-wp-bind--hidden="!state.showRevisionEditCardTitle" data-wp-text="state.revisionCardTitle"></span>
+                            <span class="revision-title-change" data-wp-bind--hidden="!state.showRevisionTitleChange">
+                                <span class="revision-from" data-wp-text="state.revisionOldTitle"></span>
+                                <span class="revision-arrow">→</span>
+                                <span class="revision-to" data-wp-text="state.revisionNewTitle"></span>
+                            </span>
+                            <span class="revision-priority" data-wp-bind--hidden="!state.showRevisionPriority">
+                                <span class="revision-from" data-wp-text="state.revisionOldPriority"></span>
+                                <span class="revision-arrow">→</span>
+                                <span class="revision-to" data-wp-text="state.revisionNewPriority"></span>
+                            </span>
+                            <span class="revision-description" data-wp-bind--hidden="!state.showRevisionDescriptionChange">
+                                <span class="revision-from" data-wp-text="state.revisionOldDescription"></span>
+                                <span class="revision-arrow">→</span>
+                                <span class="revision-to" data-wp-text="state.revisionNewDescription"></span>
+                            </span>
+                            <span class="revision-assignee" data-wp-bind--hidden="!state.showRevisionAssigneeChange">
+                                <span class="revision-from" data-wp-text="state.revisionOldAssignee"></span>
+                                <span class="revision-arrow">→</span>
+                                <span class="revision-to" data-wp-text="state.revisionNewAssignee"></span>
+                            </span>
+                            <!-- Delete: just description -->
+                            <span class="revision-desc" data-wp-bind--hidden="!state.isDeleteCommand" data-wp-text="context.item.description"></span>
+                        </span>
+                        <span class="revision-time" data-wp-text="state.revisionTimeAgo"></span>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <!-- New Card Modal -->
+        <div class="kanban-modal-overlay" data-wp-bind--hidden="!context.newCardModalOpen" data-wp-on--click="actions.closeNewCardModal" data-wp-watch="callbacks.focusNewCardInput" hidden="true">
+            <div class="kanban-modal" data-wp-on--click="actions.stopPropagation">
+                <h3 class="kanban-modal__title">New Card</h3>
+                <div class="kanban-modal__field">
+                    <label class="kanban-modal__label">Title</label>
+                    <input type="text" class="kanban-modal__input input"
+                        placeholder="Enter card title..."
+                        data-wp-bind--value="context.newCardTitle"
+                        data-wp-on--input="actions.setNewCardTitle"
+                        data-wp-on--keydown="actions.handleGlobalKeydown">
+                </div>
+                <div class="kanban-modal__field">
+                    <label class="kanban-modal__label">Description</label>
+                    <textarea class="kanban-modal__textarea input"
+                        placeholder="Optional description..."
+                        data-wp-bind--value="context.newCardDescription"
+                        data-wp-on--input="actions.setNewCardDescription"
+                        rows="2"></textarea>
+                </div>
+                <div class="kanban-modal__field">
+                    <label class="kanban-modal__label">Assignee</label>
+                    <input type="text" class="kanban-modal__input input"
+                        placeholder="Optional assignee..."
+                        data-wp-bind--value="context.newCardAssignee"
+                        data-wp-on--input="actions.setNewCardAssignee">
+                </div>
+                <div class="kanban-modal__field">
+                    <label class="kanban-modal__label">Priority</label>
+                    <select class="kanban-modal__select input"
+                        data-wp-bind--value="context.newCardPriority"
+                        data-wp-on--change="actions.setNewCardPriority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="kanban-modal__actions">
+                    <button class="btn btn--primary" data-wp-on--click="actions.createCard" data-wp-bind--disabled="!context.newCardTitle">Create Card</button>
+                    <button class="btn btn--ghost" data-wp-on--click="actions.closeNewCardModal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="module__directives kanban-directives">
+        <span class="directive-tag directive-tag--curated">data-wp-each</span>
+        <span class="directive-tag directive-tag--curated">data-wp-on-window--*</span>
+        <span class="directive-tag directive-tag--curated">data-wp-on--dragstart</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-each-key</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--value</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--hidden</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--disabled</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--*</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--input</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--change</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--blur</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--keydown</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--mouseenter</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--mouseleave</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--dragend</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--dragover</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--dragleave</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--drop</span>
+        <span class="directive-tag directive-tag--full">data-wp-watch</span>
+    </div>
+</section>

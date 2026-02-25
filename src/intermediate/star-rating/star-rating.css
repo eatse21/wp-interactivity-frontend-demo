@@ -1,0 +1,25 @@
+/* Star Rating */
+.star {
+  font-size: 1.75rem;
+  color: var(--border-dark);
+  cursor: pointer;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.star:hover {
+  transform: scale(1.1);
+}
+
+.star.filled {
+  color: var(--wp-blue-light);
+}
+
+[data-wp-interactive="starRating"].bad
+:is( [data-wp-text="state.ratingText"], .filled) {
+    color: var(--coral);
+}
+
+[data-wp-interactive="starRating"].good
+:is( [data-wp-text="state.ratingText"], .filled) {
+    color: var(--teal);
+}

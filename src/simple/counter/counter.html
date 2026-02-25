@@ -1,0 +1,27 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">counter()</span>
+        <span class="module__number">No. I</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Counter</h3>
+        <p class="module__description">
+            A humble beginning—numbers that rise and fall at your command.
+        </p>
+        <div class="demo-area" data-wp-interactive="counter" data-wp-context='{ "count": 0 }'>
+            <div class="counter-display" data-wp-text="context.count">0</div>
+            <div class="flex justify-center gap-sm">
+                <button class="btn btn--primary" data-wp-on--click="actions.decrement" data-wp-bind--disabled="state.isAtMinimum" disabled="true">−</button>
+                <button class="btn btn--ghost" data-wp-on--click="actions.reset">Reset</button>
+                <button class="btn btn--primary" data-wp-on--click="actions.increment">+</button>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--curated">data-wp-context</span>
+        <span class="directive-tag directive-tag--curated">data-wp-text</span>
+        <span class="directive-tag directive-tag--curated">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--disabled</span>
+    </div>
+</div>

@@ -1,0 +1,203 @@
+/* ===== LAYOUT ===== */
+.demo-container {
+  position: relative;
+  z-index: 1;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+/* ===== HEADER ===== */
+.demo-header {
+  text-align: center;
+  margin-bottom: var(--space-4xl);
+  padding-bottom: var(--space-2xl);
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.demo-header__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border: var(--border-width) solid var(--border);
+  padding: var(--space-xs) var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.demo-header__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: var(--space-md);
+  color: var(--ink);
+}
+
+.demo-header__title span {
+  font-style: italic;
+  color: var(--wp-blue);
+}
+
+.demo-header__subtitle {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--ink-muted);
+  max-width: 550px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Ornamental Divider */
+.demo-header::after {
+  content: '❧';
+  display: block;
+  font-size: 1.5rem;
+  color: var(--wp-blue-light);
+  margin-top: var(--space-lg);
+  opacity: 0.6;
+}
+
+/* ===== SECTION ===== */
+.demo-section {
+  margin-bottom: var(--space-4xl);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.demo-section:nth-child(1) { animation-delay: 0.1s; }
+.demo-section:nth-child(2) { animation-delay: 0.25s; }
+.demo-section:nth-child(3) { animation-delay: 0.4s; }
+.demo-section:nth-child(4) { animation-delay: 0.55s; }
+
+.demo-section__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: var(--border-width) solid var(--border);
+}
+
+.demo-section__icon {
+  font-size: 1.25rem;
+  color: var(--wp-blue-light);
+  opacity: 0.6;
+}
+
+.demo-section__title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* ===== MODULE GRID ===== */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-xl);
+}
+
+/* ===== MODULE (Component Container) ===== */
+.module {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: var(--border-width) solid var(--border);
+  overflow: hidden;
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.module:hover {
+  border-color: var(--border-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.module__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--paper-warm);
+  border-bottom: var(--border-width) solid var(--border);
+  font-family: var(--font-mono);
+}
+
+.module__label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--wp-blue);
+  letter-spacing: 0.05em;
+}
+
+.module__number {
+  font-size: 0.65rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.module__content {
+  flex: 1;
+  padding: var(--space-lg);
+}
+
+.module__title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--ink);
+}
+
+.module__description {
+  font-size: 0.9375rem;
+  color: var(--ink-muted);
+  margin-bottom: var(--space-lg);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.module__directives {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  padding: 0.5rem var(--space-lg);
+  border-top: var(--border-width) dashed var(--border);
+  min-height: 5rem;
+  align-items: start;
+}
+
+.directive-tag {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  font-weight: 500;
+  padding: 2px 6px;
+  background: var(--paper-warm);
+  border: var(--border-width) solid var(--border);
+  color: var(--ink-muted);
+}
+
+.directive-tag--wp-blue { color: var(--wp-blue); border-color: rgba(0, 115, 170, 0.25); background: rgba(0, 115, 170, 0.08); }
+
+/* ===== DEMO AREA (Inside Module) ===== */
+.demo-area {
+  background: var(--paper-aged);
+  border: var(--border-width) solid var(--border);
+  padding: var(--space-lg);
+  min-height: 80px;
+}

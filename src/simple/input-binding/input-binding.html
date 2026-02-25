@@ -1,0 +1,34 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">inputBinding()</span>
+        <span class="module__number">No. III</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Input</h3>
+        <p class="module__description">
+            Your words reflected back, a mirror of your thoughts.
+        </p>
+        <div class="demo-area" data-wp-interactive="inputBinding" data-wp-context='{ "value": "" }'>
+            <input
+                type="text"
+                class="input"
+                placeholder="Inscribe your thoughts here..."
+                data-wp-bind--value="context.value"
+                data-wp-on--input="actions.updateValue"
+            >
+            <p class="mt-md text-sm italic">
+                "Your echo: <span class="text-wp-blue font-display" data-wp-text="context.value"></span>"
+            </p>
+            <p class="text-xs text-faint mt-xs">
+                <span data-wp-text="context.value.length">0</span> characters set to paper
+            </p>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-bind--value</span>
+        <span class="directive-tag directive-tag--curated">data-wp-on--input</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-text</span>
+    </div>
+</div>

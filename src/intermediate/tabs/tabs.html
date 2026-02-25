@@ -1,0 +1,59 @@
+<div class="module">
+    <div class="module__header">
+        <span class="module__label">tabs()</span>
+        <span class="module__number">No. VII</span>
+    </div>
+    <div class="module__content">
+        <h3 class="module__title">The Chapters</h3>
+        <p class="module__description">
+            Navigate between sections as one turns pages in a well-worn book. (Works also with arrow keys)
+        </p>
+        <div class="demo-area" data-wp-interactive="tabs" data-wp-context='{ "activeTab": "tab1", "tabs": ["tab1", "tab2", "tab3"] }' data-wp-on--keydown="actions.handleKeydown">
+            <div class="tab-nav" role="tablist">
+                <button
+                    class="tab-btn"
+                    role="tab"
+                    data-wp-context='{ "tabId": "tab1" }'
+                    data-wp-class--active="state.isTabActive"
+                    data-wp-bind--aria-selected="state.isTabActive"
+                    data-wp-on--click="actions.setActiveTab"
+                >Prologue</button>
+                <button
+                    class="tab-btn"
+                    role="tab"
+                    data-wp-context='{ "tabId": "tab2" }'
+                    data-wp-class--active="state.isTabActive"
+                    data-wp-bind--aria-selected="state.isTabActive"
+                    data-wp-on--click="actions.setActiveTab"
+                >Chapter</button>
+                <button
+                    class="tab-btn"
+                    role="tab"
+                    data-wp-context='{ "tabId": "tab3" }'
+                    data-wp-class--active="state.isTabActive"
+                    data-wp-bind--aria-selected="state.isTabActive"
+                    data-wp-on--click="actions.setActiveTab"
+                >Epilogue</button>
+            </div>
+
+            <div class="tab-panel" role="tabpanel" data-wp-context='{ "panelId": "tab1" }' data-wp-bind--hidden="!state.isPanelVisible">
+                <p class="text-sm italic">"Every journey begins with a single click..."</p>
+            </div>
+            <div class="tab-panel" role="tabpanel" data-wp-context='{ "panelId": "tab2" }' data-wp-bind--hidden="!state.isPanelVisible" hidden="true">
+                <p class="text-sm italic">"The middle path—where content finds its rhythm."</p>
+            </div>
+            <div class="tab-panel" role="tabpanel" data-wp-context='{ "panelId": "tab3" }' data-wp-bind--hidden="!state.isPanelVisible" hidden="true">
+                <p class="text-sm italic">"All good things reach their conclusion here."</p>
+            </div>
+        </div>
+    </div>
+    <div class="module__directives">
+        <span class="directive-tag directive-tag--curated">data-wp-bind--aria-selected</span>
+        <span class="directive-tag directive-tag--curated">data-wp-on--keydown</span>
+        <span class="directive-tag directive-tag--full">data-wp-interactive</span>
+        <span class="directive-tag directive-tag--full">data-wp-context</span>
+        <span class="directive-tag directive-tag--full">data-wp-class--active</span>
+        <span class="directive-tag directive-tag--full">data-wp-on--click</span>
+        <span class="directive-tag directive-tag--full">data-wp-bind--hidden</span>
+    </div>
+</div>

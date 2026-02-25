@@ -1,0 +1,100 @@
+/*
+ * WordPress Interactivity API Demo
+ * Design System: Gutenberg Poetry Press
+ *
+ * Inspired by Renaissance printing presses and classical poetry books.
+ * Cool-toned palette harmonizing with WordPress's iconic blue.
+ */
+
+/* ===== FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  /* Paper & Ink Colors (cool-toned to harmonize with WP blue) */
+  --paper: #FAFBFC;
+  --paper-warm: #F4F6F8;
+  --paper-aged: #E8EDF2;
+  --ink: #1A202C;
+  --ink-light: #2D3748;
+  --ink-muted: #4A5568;
+  --ink-faint: #718096;
+
+  /* Ink Accents */
+  --wp-blue: #0073aa;
+  --wp-blue-light: #2271b1;
+  --indigo: #6366F1;
+  --teal: #0D9488;
+  --coral: #FF7F50;
+
+  /* Surfaces */
+  --surface: #FFFFFF;
+  --surface-hover: #F0F4F8;
+  --border: #E2E8F0;
+  --border-dark: #CBD5E1;
+
+  /* Shadows (soft, cool-toned) */
+  --shadow-sm: 0 1px 3px rgba(26, 32, 44, 0.06);
+  --shadow-md: 0 4px 12px rgba(26, 32, 44, 0.08);
+  --shadow-lg: 0 8px 24px rgba(26, 32, 44, 0.1);
+  --shadow-inset: inset 0 2px 4px rgba(26, 32, 44, 0.04);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+  --font-body: 'EB Garamond', 'Garamond', Georgia, serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing (generous, book-like) */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* Sizing */
+  --content-max-width: 1200px;
+  --module-max-width: 420px;
+  --border-width: 1px;
+  --border-width-thick: 2px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 17px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* ===== PAPER TEXTURE BACKGROUND ===== */
+.paper-texture {
+  position: absolute;
+  filter: url(#roughpaper);
+  inset: 0;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+}

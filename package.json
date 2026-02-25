@@ -1,0 +1,28 @@
+{
+  "name": "interactivity-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:html": "node scripts/build-html.js",
+    "build:css": "node scripts/build-css.js",
+    "watch:html": "node scripts/build-html.js --watch",
+    "watch:css": "node scripts/build-css.js --watch",
+    "build:interactivity:dev": "esbuild --bundle @wordpress/interactivity --outfile=assets/interactivity.min.js --format=esm --target=es2022 --define:globalThis.SCRIPT_DEBUG=false",
+    "build:interactivity": "esbuild --bundle @wordpress/interactivity --outfile=assets/interactivity.min.js --format=esm --target=es2022 --minify --define:globalThis.SCRIPT_DEBUG=false",
+    "build:demo": "esbuild src/index.ts --bundle --outfile=assets/demo.js --format=esm --target=es2022 --minify --external:@wordpress/interactivity",
+    "build": "npm run build:interactivity && npm run build:demo && npm run build:css && npm run build:html && npm run build:site",
+    "build:site": "rm -rf dist && mkdir dist && cp index.html dist/ && mkdir -p dist/assets && find assets -type f ! -name '*.map' -exec cp --parents {} dist \\; && cp -r styles dist/",
+    "dev": "npm run build:interactivity:dev && npm run build:css && npm run build:html && concurrently \"npm run watch:html\" \"npm run watch:css\" \"npm run dev:watch\" \"npx serve .\"",
+    "dev:watch": "esbuild src/index.ts --bundle --outfile=assets/demo.js --format=esm --target=es2022 --sourcemap --external:@wordpress/interactivity --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@wordpress/interactivity": "^6.40.0",
+    "esbuild": "^0.27.3",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
