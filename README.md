@@ -4,7 +4,9 @@
 
 Interactive examples showcasing `@wordpress/interactivity` outside WordPress with ES modules and importmap.
 
-![Website screenshot](./screenshot.webp)
+[![Website screenshot](./screenshot.webp)](https://eatse21.github.io/wp-interactivity-frontend-demo)
+
+[See the demo](https://eatse21.github.io/wp-interactivity-frontend-demo)
 
 ## Overview
 
