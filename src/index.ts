@@ -11,7 +11,7 @@
 // ============================================================================
 
 // Directive Toggle - Global UI toggle for showing all directives
-import './shared/directive-toggle';
+import './simple/directive-toggle/directive-toggle';
 
 // ============================================================================
 // SIMPLE EXAMPLES (Building Blocks)

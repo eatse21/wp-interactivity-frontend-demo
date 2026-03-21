@@ -1,0 +1,43 @@
+/* ===== DIRECTIVE TOGGLE FAB ===== */
+.directive-toggle-fab {
+  position: fixed;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  z-index: 1000;
+}
+
+.directive-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--surface);
+  border: var(--border-width-thick) solid var(--wp-blue);
+  color: var(--wp-blue);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-fast);
+}
+
+.directive-toggle-btn:hover {
+  background: var(--wp-blue);
+  color: var(--paper);
+}
+
+.directive-toggle-btn:focus-visible {
+  outline: 2px solid var(--wp-blue);
+  outline-offset: 2px;
+}
+
+.directive-toggle-btn[aria-pressed="true"] {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--paper);
+}
+
+.directive-toggle-icon {
+  font-size: 1rem;
+}

@@ -17,6 +17,11 @@ const ROOT = path.resolve(__dirname, '..');
 const SRC_DIR = path.join(ROOT, 'src');
 const OUTPUT_FILE = path.join(ROOT, 'index.html');
 
+// Footer elements - HTML files to inject into {{FOOTER_ELEMENTS}} placeholder
+const FOOTER_ELEMENTS = [
+  'simple/directive-toggle/directive-toggle.html',
+];
+
 // Component order must match the original index.html
 const SECTIONS = [
   {
@@ -105,9 +110,22 @@ function buildHTML() {
     html += `        </section>\n`;
   }
 
-  // 4. Read footer partial
+  // 4. Read footer partial and inject footer elements
   const footerPath = path.join(SRC_DIR, '_partials', '_footer.html');
-  html += '\n' + readFile(footerPath);
+  let footerContent = readFile(footerPath);
+
+  // Inject footer elements into placeholder
+  let footerElementsHTML = '';
+  for (const elementPath of FOOTER_ELEMENTS) {
+    const fullPath = path.join(SRC_DIR, elementPath);
+    const elementContent = readFile(fullPath);
+    if (elementContent) {
+      footerElementsHTML += `\n    ${elementContent.trim()}\n`;
+    }
+  }
+  footerContent = footerContent.replace('{{FOOTER_ELEMENTS}}', footerElementsHTML);
+
+  html += '\n' + footerContent;
 
   // 5. Write output
   fs.writeFileSync(OUTPUT_FILE, html);

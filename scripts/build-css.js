@@ -21,7 +21,7 @@ const OUTPUT_FILE = path.join(ROOT, 'styles', 'styles.css');
 const SECTIONS = [
   {
     folder: 'simple',
-    components: ['counter', 'toggle', 'input-binding', 'class-toggle', 'conditional']
+    components: ['counter', 'toggle', 'input-binding', 'class-toggle', 'conditional', 'directive-toggle']
   },
   {
     folder: 'intermediate',
